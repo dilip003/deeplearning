@@ -1,0 +1,83 @@
+octave:392> T1 = reshape(nn_params(1:10025),25,401);
+octave:393> size(T1)
+ans =
+
+    25   401
+
+octave:394> T2 = reshape(nn_params(10026:10285),10,26);
+octave:395> size(T2)
+ans =
+
+   10   26
+
+------
+
+
+
+-----
+K = num_labels;
+
+	for i=1:m
+
+		for k=1:K
+
+			%convert the output result number {10,1,2,3,4,5,6,7,8,9} to binary vector form
+			yi = zeros(num_labels,1);
+
+			if(y(i) == size(yi,1))
+				yi(1) = 1;
+			else
+				yi(y(i)+1) = 1;
+			endif;
+
+
+			Xi = X(i,:); % process one example at a time
+			z2 = Theta1 * Xi'; 
+			a2 = sigmoid(z2); % layer 2 activation
+			a2 = [1 ; a2]; % add  1 or a0
+			z3 = Theta2 * a2; 
+			a3 = sigmoid(z3); %output layer activation or the result hypothesis
+			h = a3 ;
+			
+			%J_this = (1/m)*(  -yi'*log(h) - (1-yi)'*log(1-h)  );
+			J_this = (  -yi'*log(h) - (1-yi)'*log(1-h)  );
+			J = J + J_this;
+		end;	
+	end;	
+
+J = J/m;
+----
+
+K = num_labels;
+
+	for i=1:m
+
+		%for k=1:K
+
+			%convert the output result number {10,1,2,3,4,5,6,7,8,9} to binary vector form
+			yi = zeros(num_labels,1);
+
+			if(y(i) == size(yi,1))
+				yi(1) = 1;
+			else
+				yi(y(i)+1) = 1;
+			endif;
+
+
+			Xi = X(i,:); % process one example at a time
+			z2 = Theta1 * Xi'; 
+			a2 = sigmoid(z2); % layer 2 activation
+			a2 = [1 ; a2]; % add  1 or a0
+			z3 = Theta2 * a2; 
+			a3 = sigmoid(z3); %output layer activation or the result hypothesis
+			h = a3 ;
+			
+			%J_this = (1/m)*(  -yi'*log(h) - (1-yi)'*log(1-h)  );
+			J_this = sum((  -yi.*log(h) - (1-yi).*log(1-h)));
+			J = J + J_this;
+		%end;	
+	end;	
+
+J = J/m;
+
+----
