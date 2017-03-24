@@ -1,0 +1,45 @@
+muu =
+
+   2000.6809      3.1702
+
+sigmaa =
+
+   794.70235     0.76098
+
+
+   Test data for 1650sqrt, 3 BR
+
+   		1 -0.44127 -0.22366
+
+
+
+
+Running gradient descent ...
+
+ First J 64300749594.565948
+
+ Last J 2108850058.400706
+
+ Theta 
+theta =
+
+   3.3430e+05
+   1.0009e+05
+   3.6735e+03
+
+Theta computed from gradient descent: 
+ 334302.063993 
+ 100087.116006 
+ 3673.548451 
+
+Predicted price of a 1650 sq-ft, 3 br house (using gradient descent):
+ $289314.996467
+Program paused. Press enter to continue.
+Solving with normal equations...
+Theta computed from the normal equations: 
+ 89597.909544 
+ 139.210674 
+ -8738.019113 
+
+Predicted price of a 1650 sq-ft, 3 br house (using normal equations):
+ $91490.825405
